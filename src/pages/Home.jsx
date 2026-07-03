@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHandshake,
+  faPeopleGroup,
   faPalette,
   faDove,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
+import heroImage from "../assets/images/Image1.png";
 
 const Home = () => {
   const { t } = useLang();
@@ -13,32 +15,26 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-<section style={styles.hero}>
-  <div style={styles.heroOverlay}>
+      <section style={styles.hero}>
+        <div style={styles.heroOverlay} className="hero-overlay">
 
-    {/* Left — Text */}
-    <div style={styles.heroContent}>
-      <p style={styles.heroEyebrow}>DJOLO e.V. — Dortmund</p>
-      <h1 style={styles.heroTitle}>{t.home.slogan}</h1>
-      <p style={styles.heroIntro}>{t.home.intro}</p>
-      <Link to="/about" style={styles.heroBtn}>
-        {t.home.cta}
-      </Link>
-    </div>
+          {/* Left — Text */}
+          <div style={styles.heroContent}>
+            <p style={styles.heroEyebrow}>DJOLO e.V. — Dortmund</p>
+            <h1 style={styles.heroTitle}>{t.home.slogan}</h1>
+            <p style={styles.heroIntro}>{t.home.intro}</p>
+            <Link to="/about" style={styles.heroBtn}>
+              {t.home.cta}
+            </Link>
+          </div>
 
-    {/* Right — Logo Placeholder */}
-    <div style={styles.heroImageBox}>
-      <div style={styles.heroPlaceholder}>
-        <div style={styles.placeholderCircle}>
-          <span style={styles.placeholderLetter}>D</span>
+          {/* Right — Hero Image */}
+          <div style={styles.heroImageBox} className="hero-image-box">
+            <img src={heroImage} alt="Djolo hero" style={styles.heroImage} />
+          </div>
+
         </div>
-        <p style={styles.placeholderLabel}>— LOGO —</p>
-        <p style={styles.placeholderSub}>Replace with real logo</p>
-      </div>
-    </div>
-
-  </div>
-</section>
+      </section>
       {/* Focus Areas */}
       <section style={styles.focusSection}>
         <div className="section">
@@ -46,24 +42,20 @@ const Home = () => {
           <div className="section-underline"></div>
           <div className="grid-3">
             <div className="card" style={styles.focusCard}>
-              <FontAwesomeIcon
-                icon={faHandshake}
-                size="2x"
-                style={styles.icon}
-              />
+              <FontAwesomeIcon icon={faHandshake} size="2x" style={styles.icon} />
               <h3 style={styles.cardTitle}>{t.about.focus1}</h3>
             </div>
             <div className="card" style={styles.focusCard}>
-              <FontAwesomeIcon
-                icon={faPalette}
-                size="2x"
-                style={styles.icon}
-              />
+              <FontAwesomeIcon icon={faPeopleGroup} size="2x" style={styles.icon} />
               <h3 style={styles.cardTitle}>{t.about.focus2}</h3>
             </div>
             <div className="card" style={styles.focusCard}>
-              <FontAwesomeIcon icon={faDove} size="2x" style={styles.icon} />
+              <FontAwesomeIcon icon={faPalette} size="2x" style={styles.icon} />
               <h3 style={styles.cardTitle}>{t.about.focus3}</h3>
+            </div>
+            <div className="card" style={styles.focusCard}>
+              <FontAwesomeIcon icon={faDove} size="2x" style={styles.icon} />
+              <h3 style={styles.cardTitle}>{t.about.focus4}</h3>
             </div>
           </div>
         </div>
@@ -89,42 +81,12 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Contact Banner */}
-      <section style={styles.banner}>
-        <div style={styles.bannerContent}>
-          <h2 style={styles.bannerTitle}>{t.contact.title}</h2>
-          <p style={styles.bannerSub}>{t.footer.address}</p>
-          <p style={styles.bannerSub}>{t.footer.phone}</p>
-          <Link to="/contact" style={styles.bannerBtn}>
-            {t.contact.send} →
-          </Link>
-        </div>
-      </section>
     </div>
   );
 };
 
 const styles = {
-
-  heroOverlay: {
-    width: "100%",
-    maxWidth: "1100px",
-    padding: "60px 20px",
-  },
-  heroContent: {
-    maxWidth: "650px",
-  },
-
-  heroTitle: {
-    fontSize: "clamp(2rem, 5vw, 3.5rem)",
-    fontWeight: "900",
-    color: "#ffffff",
-    lineHeight: "1.15",
-    marginBottom: "24px",
-  },
-
-hero: {
+  hero: {
     width: "100%",
     minHeight: "90vh",
     background: "linear-gradient(160deg, #e0f4f4 0%, #ffffff 50%, #e8f6fd 100%)",
@@ -132,12 +94,26 @@ hero: {
     alignItems: "center",
     justifyContent: "center",
   },
+  heroOverlay: {
+    width: "100%",
+    maxWidth: "1100px",
+    padding: "60px 20px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "48px",
+    alignItems: "center",
+  },
+  heroContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+  },
   heroEyebrow: {
     color: "#20B2AA",
     fontWeight: "700",
     fontSize: "0.9rem",
     letterSpacing: "2px",
-    textTransform: "uppercase",
+    // textTransform: "uppercase",
     marginBottom: "16px",
   },
   heroTitle: {
@@ -163,6 +139,17 @@ hero: {
     fontWeight: "700",
     fontSize: "0.95rem",
     textDecoration: "none",
+  },
+  heroImageBox: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  heroImage: {
+    width: "100%",
+    maxWidth: "520px",
+    borderRadius: "28px",
+    objectFit: "cover",
   },
   focusSection: {
     backgroundColor: "#f9f9f9",
@@ -243,73 +230,6 @@ hero: {
     fontWeight: "700",
     fontSize: "0.95rem",
     textDecoration: "none",
-  },
-  hero: {
-    width: "100%",
-    minHeight: "90vh",
-    background: "linear-gradient(160deg, #e0f4f4 0%, #ffffff 50%, #e8f6fd 100%)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  heroOverlay: {
-    width: "100%",
-    maxWidth: "1100px",
-    padding: "60px 20px",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "48px",
-    alignItems: "center",
-  },
-  heroContent: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-  },
-  heroImageBox: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  heroPlaceholder: {
-    width: "100%",
-    maxWidth: "380px",
-    aspectRatio: "1/1",
-    border: "2px dashed #20B2AA",
-    borderRadius: "16px",
-    backgroundColor: "#f0fafa",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "12px",
-  },
-  placeholderCircle: {
-    width: "90px",
-    height: "90px",
-    borderRadius: "50%",
-    background: "linear-gradient(135deg, #87CEEB 0%, #20B2AA 100%)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    boxShadow: "0 4px 16px rgba(32,178,170,0.3)",
-  },
-  placeholderLetter: {
-    color: "#ffffff",
-    fontWeight: "900",
-    fontSize: "2.2rem",
-  },
-  placeholderLabel: {
-    fontSize: "0.85rem",
-    fontWeight: "700",
-    color: "#20B2AA",
-    letterSpacing: "3px",
-    textTransform: "uppercase",
-  },
-  placeholderSub: {
-    fontSize: "0.75rem",
-    color: "#888888",
-    fontStyle: "italic",
   },
 };
 

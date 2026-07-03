@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHandshake,
+  faPeopleGroup,
   faPalette,
   faDove,
 } from "@fortawesome/free-solid-svg-icons";
@@ -11,8 +12,9 @@ const About = () => {
 
   const focusAreas = [
     { icon: faHandshake, text: t.about.focus1 },
-    { icon: faPalette, text: t.about.focus2 },
-    { icon: faDove, text: t.about.focus3 },
+    { icon: faPeopleGroup, text: t.about.focus2 },
+    { icon: faPalette, text: t.about.focus3 },
+    { icon: faDove, text: t.about.focus4 },
   ];
 
   return (
@@ -90,7 +92,7 @@ const About = () => {
 };
 
 const styles = {
-pageHeader: {
+  pageHeader: {
     backgroundColor: "#f0fafa",
     borderBottom: "3px solid #87CEEB",
     padding: "60px 20px 40px",

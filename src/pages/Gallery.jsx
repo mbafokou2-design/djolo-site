@@ -3,35 +3,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
 
-// Import your images here once you add them to src/assets/images/
-// For now we use placeholder images
+
 const images = [
   {
-    src: "https://placehold.co/600x400/87CEEB/000000?text=Activity+1",
+    src: "/src/assets/images/gallery1.jpg",
     caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln",
   },
   {
-    src: "https://placehold.co/600x400/87CEEB/000000?text=Activity+2",
+    src: "/src/assets/images/gallery2.jpg",
     caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln",
   },
   {
-    src: "https://placehold.co/600x400/87CEEB/000000?text=Activity+3",
+    src: "/src/assets/images/gallery3.jpg",
     caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln",
   },
   {
-    src: "https://placehold.co/600x400/87CEEB/000000?text=Activity+4",
+    src: "/src/assets/images/gallery4.jpg",
     caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
   },
   {
-    src: "https://placehold.co/600x400/87CEEB/000000?text=Activity+5",
+    src: "/src/assets/images/gallery5.jpg",
     caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
   },
   {
-    src: "https://placehold.co/600x400/87CEEB/000000?text=Activity+6",
+    src: "/src/assets/images/gallery6.jpg",
     caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
   },
   {
-    src: "https://placehold.co/600x400/87CEEB/000000?text=Activity+7",
+    src: "/src/assets/images/gallery7.jpg",
     caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
   },
 ];

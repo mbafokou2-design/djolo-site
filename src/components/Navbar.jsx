@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
+import logoImage from "../assets/images/Image1.png";
 
 const Navbar = () => {
   const { lang, toggleLang, t } = useLang();
@@ -25,15 +26,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <Link to="/" style={styles.logoLink}>
-            <div style={styles.logoPlaceholder}>
-              <div style={styles.logoCircle}>
-                <span style={styles.logoCircleInner}>D</span>
-              </div>
-              <div style={styles.logoTextWrap}>
-                <span style={styles.logoMain}>DJOLO</span>
-                <span style={styles.logoSub}>e.V.</span>
-              </div>
-            </div>
+            <img src={logoImage} alt="Djolo logo" style={styles.logoImage} />
           </Link>
 
           {/* Desktop Links */}
@@ -126,7 +119,13 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-between",
   },
-  logoLink: { textDecoration: "none" },
+  logoLink: { textDecoration: "none", display: "flex", alignItems: "center" },
+  logoImage: {
+    width: "100%",
+    height: "48px",
+    objectFit: "cover",
+
+  },
   logoPlaceholder: {
     display: "flex",
     alignItems: "center",

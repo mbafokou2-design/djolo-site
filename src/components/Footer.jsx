@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useLang } from "../context/LanguageContext";
+import logoImage from "../assets/images/Image1.png";
 
 const Footer = () => {
   const { t } = useLang();
@@ -22,13 +23,11 @@ const Footer = () => {
 
         {/* Column 1 - Brand */}
         <div style={styles.col}>
-          <h2 style={styles.brand}>
-            DJOLO <span style={styles.accent}>e.V.</span>
-          </h2>
+          <img src={logoImage} alt="Djolo logo" style={styles.footerLogo} />
           <p style={styles.tagline}>
             {t.home.slogan}
           </p>
-          <div style={styles.socials}>
+          {/* <div style={styles.socials}>
             <a href="https://facebook.com" target="_blank" rel="noreferrer" style={styles.socialIcon}>
               <FontAwesomeIcon icon={faFacebook} size="lg" />
             </a>
@@ -38,7 +37,7 @@ const Footer = () => {
             <a href="https://wa.me/4915751193470" target="_blank" rel="noreferrer" style={styles.socialIcon}>
               <FontAwesomeIcon icon={faWhatsapp} size="lg" />
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* Column 2 - Quick Links */}
@@ -81,7 +80,7 @@ const Footer = () => {
 };
 
 const styles = {
-footer: {
+  footer: {
     backgroundColor: "#f0fafa",
     color: "#000000",
     fontFamily: "'Segoe UI', sans-serif",
@@ -222,6 +221,11 @@ footer: {
     fontSize: "0.8rem",
     color: "#333333",
     margin: 0,
+  },
+  footerLogo: {
+    height: "40px",
+    width: "160px",
+    marginBottom: "14px",
   },
 };
 

@@ -21,13 +21,15 @@ const translations = {
         "DJOLO e.V. is a cultural association in Dortmund dedicated to promoting intercultural exchange and the visibility of African culture. Through music, dance and educational programs, we create spaces where people of different backgrounds can meet.",
       cta: "Learn More About Us",
     },
+    // EN
     about: {
       title: "About Us",
       text: "DJOLO e.V. is a Dortmund-based cultural association committed to promoting intercultural exchange and the visibility of African culture. Through music, dance and educational programs, the association creates spaces of encounter between people of different origins, contributing to cultural diversity and social participation in Dortmund.",
       focusTitle: "Our Focus Areas",
-      focus1: "Promoting an international mindset",
-      focus2: "Promoting culture in all cultural fields",
-      focus3: "Promoting tolerance and mutual understanding between peoples",
+      focus1: "Promotion of international understanding",
+      focus2: "Promotion of development cooperation",
+      focus3: "Promotion of culture across all cultural fields",
+      focus4: "Promotion of tolerance and the spirit of mutual understanding between peoples",
     },
     activities: {
       title: "Our Activities",
@@ -62,9 +64,11 @@ const translations = {
         },
       ],
     },
+    // EN
+    // EN
     gallery: {
       title: "Gallery",
-      subtitle: "Moments from our activities",
+      subtitle: "Children's Program: Pedagogical Concentration Through Drumming",
     },
     team: {
       title: "Board Members",
@@ -83,6 +87,17 @@ const translations = {
       send: "Send Message",
       address: "Address",
       phone: "Phone",
+    },
+    // EN — ajoute après le bloc "contact"
+    donation: {
+      title: "Support Us",
+      subtitle: "Make a Donation",
+      iban: "IBAN: DE26 4401 0046 0752 944 63",
+      bic: "BIC: PBNKDEFFXXX",
+      bank: "Bank: POSTBANK",
+      recipient: "Recipient: Didier Djourou",
+      reference: "Reference: DONATION DJOLO e.V.",
+      note: "As a non-profit association, we can issue a donation receipt upon request.",
     },
   },
   de: {
@@ -107,13 +122,15 @@ const translations = {
         "Djolo e.V. ist ein Dortmunder Kulturverein, der sich fur die Forderung des interkulturellen Austauschs und die Sichtbarkeit afrikanischer Kultur einsetzt. Durch Musik-, Tanz- und Bildungsangebote schafft der Verein Begegnungsraume zwischen Menschen unterschiedlicher Herkunft.",
       cta: "Mehr uber uns erfahren",
     },
+    // DE
     about: {
       title: "Uber uns",
       text: "Djolo e.V. ist ein Dortmunder Kulturverein, der sich fur die Forderung des interkulturellen Austauschs und die Sichtbarkeit afrikanischer Kultur einsetzt. Durch Musik-, Tanz- und Bildungsangebote schafft der Verein Begegnungsraume zwischen Menschen unterschiedlicher Herkunft und tragt zur kulturellen Vielfalt sowie zur gesellschaftlichen Teilhabe in Dortmund bei.",
       focusTitle: "Unsere Schwerpunkte",
-      focus1: "Forderung der internationalen Gesinnung",
-      focus2: "Forderung der Kultur auf allen Kulturgebieten",
-      focus3: "Forderung der Toleranz und des Volkerverstandigungsgedankens",
+      focus1: "Forderung der internationalen Verstandigung",
+      focus2: "Forderung der Entwicklungszusammenarbeit",
+      focus3: "Forderung der Kultur auf allen Kulturgebieten",
+      focus4: "Forderung der Toleranz und des Volkerverstandigungsgedankens",
     },
     activities: {
       title: "Unsere Aktivitaten",
@@ -148,9 +165,12 @@ const translations = {
         },
       ],
     },
+    // EN
+    // DE
+    // DE
     gallery: {
       title: "Galerie",
-      subtitle: "Momente aus unseren Aktivitaten",
+      subtitle: "Kinderprogramm: Padagogische Konzentration durch Trommeln",
     },
     team: {
       title: "Vorstandsmitglieder",
@@ -169,6 +189,17 @@ const translations = {
       send: "Nachricht senden",
       address: "Adresse",
       phone: "Telefon",
+    },
+    // DE — ajoute après le bloc "contact"
+    donation: {
+      title: "Unterstutzen Sie uns",
+      subtitle: "Spenden",
+      iban: "IBAN: DE26 4401 0046 0752 944 63",
+      bic: "BIC: PBNKDEFFXXX",
+      bank: "Bank: POSTBANK",
+      recipient: "Empfanger: Didier Djourou",
+      reference: "Verwendungszweck: SPENDE DJOLO e.V.",
+      note: "Als gemeinnutziger Verein stellen wir auf Anfrage eine Spendenbescheinigung aus.",
     },
   },
 };

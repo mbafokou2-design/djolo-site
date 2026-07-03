@@ -132,4 +132,22 @@ img {
   nav ul {
     display: none !important;
   }
+
+  .heroImage {
+    width: 70%;
+    max-width: 520px;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    grid-template-columns: 1fr !important;
+    padding: 40px 16px !important;
+  }
+
+  .hero-image-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
 }
