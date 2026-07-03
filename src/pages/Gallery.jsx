@@ -2,37 +2,23 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
+import gallery1 from "../assets/images/gallery1.jpg";
+import gallery2 from "../assets/images/gallery2.jpg";
+import gallery3 from "../assets/images/gallery3.jpg";
+import gallery4 from "../assets/images/gallery4.jpg";
+import gallery5 from "../assets/images/gallery5.jpg";
+import gallery6 from "../assets/images/gallery6.jpg";
+import gallery7 from "../assets/images/gallery7.jpg";
 
 
 const images = [
-  {
-    src: "/src/assets/images/gallery1.jpg",
-    caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln",
-  },
-  {
-    src: "/src/assets/images/gallery2.jpg",
-    caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln",
-  },
-  {
-    src: "/src/assets/images/gallery3.jpg",
-    caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln",
-  },
-  {
-    src: "/src/assets/images/gallery4.jpg",
-    caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
-  },
-  {
-    src: "/src/assets/images/gallery5.jpg",
-    caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
-  },
-  {
-    src: "/src/assets/images/gallery6.jpg",
-    caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
-  },
-  {
-    src: "/src/assets/images/gallery7.jpg",
-    caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund",
-  },
+  { src: gallery1, caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln" },
+  { src: gallery2, caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln" },
+  { src: gallery3, caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln" },
+  { src: gallery4, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
+  { src: gallery5, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
+  { src: gallery6, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
+  { src: gallery7, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
 ];
 
 const Gallery = () => {
