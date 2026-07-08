@@ -45,14 +45,17 @@ const translations = {
     activities: {
       title: "Our Activities",
       joinUs: "Get in Touch",
+      // en — dans activities.list
       list: [
         {
           title: "Football Tournament with the Police - RESPECT & FAIRPLAY",
           desc: "Held at Hoschpark in Dortmund.",
+          category: "football",
         },
         {
           title: "African Drum Workshop",
           desc: "At Haus der Vielfalt Dortmund. Weekly, free for everyone.",
+          category: "workshop",
         },
         {
           title: "African Dance Classes",
@@ -61,10 +64,12 @@ const translations = {
         {
           title: "Children's Program - Exchange & Fun",
           desc: "At Monkey Town in Dortmund.",
+          category: "kids",
         },
         {
           title: "Children's Program - Educational Focus Through Drumming",
           desc: "A pedagogical program using drumming to build concentration.",
+          category: "drumming",
         },
         {
           title: "Youth Program - Exchange & Politics",
@@ -182,14 +187,17 @@ const translations = {
     activities: {
       title: "Unsere Aktivitäten",
       joinUs: "Nehmen Sie Kontakt mit uns auf",
+      // de — dans activities.list
       list: [
         {
           title: "Fussballturnier mit der Polizei - RESPEKT & FAIRPLAY",
           desc: "Am Hoschpark in Dortmund.",
+          category: "football",
         },
         {
           title: "Afrikanische Trommel Workshop",
           desc: "Im Haus der Vielfalt Dortmund. Wochentlich, kostenlos fur alle.",
+          category: "workshop",
         },
         {
           title: "Afrikanische Tanzkurse",
@@ -198,10 +206,12 @@ const translations = {
         {
           title: "Kinderprogramm - Austausch & Spass",
           desc: "Im Monkey Town in Dortmund.",
+          category: "kids",
         },
         {
           title: "Kinderprogramm - Padagogische Konzentration mit dem Trommeln",
           desc: "Ein padagogisches Programm zur Forderung der Konzentration durch Trommeln.",
+          category: "drumming",
         },
         {
           title: "Jugendlichen-Programm - Austausch und Politik",
@@ -262,17 +272,17 @@ const translations = {
       emailLabel: "E-Mail-Adresse",
     },
     // DE — ajoute après le bloc "contact"
-// de
-donation: {
-  title: "Spende",
-  subtitle: "Spenden",
-  iban: "IBAN: DE26 4401 0046 0752 944 63",
-  bic: "BIC: PBNKDEFFXXX",
-  bank: "Bank: POSTBANK",
-  recipient: "Empfänger: DJOLO e.V.",
-  reference: "Verwendungszweck: SPENDE DJOLO e.V.",
-  note: "Als gemeinnütziger Verein können wir Ihnen auf Anfrage eine Spendenquittung ausstellen.",
-},
+    // de
+    donation: {
+      title: "Spende",
+      subtitle: "Spenden",
+      iban: "IBAN: DE26 4401 0046 0752 944 63",
+      bic: "BIC: PBNKDEFFXXX",
+      bank: "Bank: POSTBANK",
+      recipient: "Empfänger: DJOLO e.V.",
+      reference: "Verwendungszweck: SPENDE DJOLO e.V.",
+      note: "Als gemeinnütziger Verein können wir Ihnen auf Anfrage eine Spendenquittung ausstellen.",
+    },
   },
 };
 

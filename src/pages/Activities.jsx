@@ -8,7 +8,9 @@ import {
   faUsers,
   faHouseChimney,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import { useLang } from "../context/LanguageContext";
+
 
 const icons = [
   faFutbol,
@@ -34,25 +36,40 @@ const Activities = () => {
       {/* Activities Grid */}
       <section className="section">
         <div style={styles.grid}>
-          {t.activities.list.map((activity, index) => (
-            <div className="card" key={index} style={styles.card}>
-              <div style={styles.iconWrap}>
-                <FontAwesomeIcon
-                  icon={icons[index]}
-                  size="xl"
-                  style={styles.icon}
-                />
-              </div>
-              <div style={styles.cardBody}>
-                <h3 style={styles.cardTitle}>{activity.title}</h3>
-                <p style={styles.cardDesc}>{activity.desc}</p>
-              </div>
-            </div>
-          ))}
+          {t.activities.list.map((activity, index) => {
+            const CardTag = activity.category ? Link : "div";
+            const cardProps = activity.category
+              ? { to: `/gallery?category=${activity.category}` }
+              : {};
+
+            return (
+              <CardTag
+                key={index}
+                className="card"
+                style={{
+                  ...styles.card,
+                  textDecoration: "none",
+                  cursor: activity.category ? "pointer" : "default",
+                }}
+                {...cardProps}
+              >
+                <div style={styles.iconWrap}>
+                  <FontAwesomeIcon
+                    icon={icons[index]}
+                    size="xl"
+                    style={styles.icon}
+                  />
+                </div>
+                <div style={styles.cardBody}>
+                  <h3 style={styles.cardTitle}>{activity.title}</h3>
+                  <p style={styles.cardDesc}>{activity.desc}</p>
+                </div>
+              </CardTag>
+            );
+          })}
         </div>
       </section>
 
-      {/* Bottom Banner */}
       {/* Bottom Banner */}
       <section style={styles.banner}>
         <div style={styles.bannerContent}>

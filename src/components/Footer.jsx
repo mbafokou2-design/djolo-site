@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import {  faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
 import logoImage from "../assets/images/Image1.png";
 
 const Footer = () => {
   const { t } = useLang();
 
-const navLinks = [
-  { label: t.nav.home, path: "/" },
-  { label: t.nav.about, path: "/about" },
-  { label: t.nav.activities, path: "/activities" },
-  { label: t.nav.gallery, path: "/gallery" },
-  { label: t.nav.contact, path: "/contact" },
-];
+  const navLinks = [
+    { label: t.nav.home, path: "/" },
+    { label: t.nav.about, path: "/about" },
+    { label: t.nav.activities, path: "/activities" },
+    { label: t.nav.gallery, path: "/gallery" },
+    { label: t.nav.contact, path: "/contact" },
+  ];
 
   return (
     <footer style={styles.footer}>
@@ -63,6 +63,10 @@ const navLinks = [
           <div style={styles.contactItem}>
             <FontAwesomeIcon icon={faPhone} style={styles.contactIcon} />
             <span>{t.footer.phone}</span>
+          </div>
+          <div style={styles.contactItem}>
+            <FontAwesomeIcon icon={faEnvelope} style={styles.contactIcon} />
+            <span>{t.footer.email}</span>
           </div>
         </div>
 
