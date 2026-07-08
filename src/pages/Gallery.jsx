@@ -15,7 +15,7 @@ import foot1 from "../assets/images/football.jpg";
 import foot2 from "../assets/images/football1.jpg";
 import foot3 from "../assets/images/football2.jpg";
 import foot4 from "../assets/images/football3.jpg";
-import Kid from "../assets/images/Kids.jpg";
+import Kid from "../assets/images/kids.jpg";
 
 
 const categories = [
