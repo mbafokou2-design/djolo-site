@@ -7,6 +7,9 @@ import {
   faBrain,
   faUsers,
   faHouseChimney,
+  faLocationDot,
+  faPhone,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LanguageContext";
@@ -71,12 +74,22 @@ const Activities = () => {
       </section>
 
       {/* Bottom Banner */}
+{/* Bottom Banner */}
       <section style={styles.banner}>
         <div style={styles.bannerContent}>
           <h2 style={styles.bannerTitle}>{t.activities.joinUs}</h2>
-          <p style={styles.bannerSub}>{t.footer.address}</p>
-          <p style={styles.bannerSub}>{t.footer.phone}</p>
-          <p style={styles.bannerSub}>{t.footer.email}</p>
+          <p style={styles.bannerSub}>
+            <FontAwesomeIcon icon={faLocationDot} style={styles.bannerIcon} />
+            {t.footer.address}
+          </p>
+          <p style={styles.bannerSub}>
+            <FontAwesomeIcon icon={faPhone} style={styles.bannerIcon} />
+            {t.footer.phone}
+          </p>
+          <p style={styles.bannerSub}>
+            <FontAwesomeIcon icon={faEnvelope} style={styles.bannerIcon} />
+            {t.footer.email}
+          </p>
         </div>
       </section>
     </div>
@@ -151,10 +164,18 @@ const styles = {
     color: "#000000",
     marginBottom: "12px",
   },
-  bannerSub: {
+bannerSub: {
     fontSize: "0.95rem",
     color: "#444444",
     lineHeight: "1.7",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "10px",
+  },
+  bannerIcon: {
+    color: "#87CEEB",
+    fontSize: "0.9rem",
   },
 };
 
