@@ -73,23 +73,24 @@ const Activities = () => {
         </div>
       </section>
 
-      {/* Bottom Banner */}
 {/* Bottom Banner */}
       <section style={styles.banner}>
         <div style={styles.bannerContent}>
           <h2 style={styles.bannerTitle}>{t.activities.joinUs}</h2>
-          <p style={styles.bannerSub}>
-            <FontAwesomeIcon icon={faLocationDot} style={styles.bannerIcon} />
-            {t.footer.address}
-          </p>
-          <p style={styles.bannerSub}>
-            <FontAwesomeIcon icon={faPhone} style={styles.bannerIcon} />
-            {t.footer.phone}
-          </p>
-          <p style={styles.bannerSub}>
-            <FontAwesomeIcon icon={faEnvelope} style={styles.bannerIcon} />
-            {t.footer.email}
-          </p>
+          <div style={styles.bannerRow}>
+            <span style={styles.bannerItem}>
+              <FontAwesomeIcon icon={faLocationDot} style={styles.bannerIcon} />
+              {t.footer.address}
+            </span>
+            <span style={styles.bannerItem}>
+              <FontAwesomeIcon icon={faPhone} style={styles.bannerIcon} />
+              {t.footer.phone}
+            </span>
+            <span style={styles.bannerItem}>
+              <FontAwesomeIcon icon={faEnvelope} style={styles.bannerIcon} />
+              {t.footer.email}
+            </span>
+          </div>
         </div>
       </section>
     </div>
@@ -164,14 +165,21 @@ const styles = {
     color: "#000000",
     marginBottom: "12px",
   },
-bannerSub: {
+
+bannerRow: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "24px",
     fontSize: "0.95rem",
     color: "#444444",
-    lineHeight: "1.7",
+  },
+  bannerItem: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    gap: "10px",
+    gap: "8px",
+    whiteSpace: "nowrap",
   },
   bannerIcon: {
     color: "#87CEEB",
