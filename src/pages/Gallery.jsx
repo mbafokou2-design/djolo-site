@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
+
 import gallery1 from "../assets/images/gallery1.jpg";
 import gallery2 from "../assets/images/gallery2.jpg";
 import gallery3 from "../assets/images/gallery3.jpg";
@@ -9,105 +11,120 @@ import gallery4 from "../assets/images/gallery4.jpg";
 import gallery5 from "../assets/images/gallery5.jpg";
 import gallery6 from "../assets/images/gallery6.jpg";
 import gallery7 from "../assets/images/gallery7.jpg";
+import foot1 from "../assets/images/football.jpg";
+import foot2 from "../assets/images/football1.jpg";
+import foot3 from "../assets/images/football2.jpg";
+import foot4 from "../assets/images/football3.jpg";
+import Kid from "../assets/images/Kids.jpg";
 
 
-const images = [
-  { src: gallery1, caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln" },
-  { src: gallery2, caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln" },
-  { src: gallery3, caption: "Kinderprogramm – Pädagogische Konzentration mit dem Trommeln" },
-  { src: gallery4, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
-  { src: gallery5, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
-  { src: gallery6, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
-  { src: gallery7, caption: "Afrikanische Trommel Workshop – Haus der Vielfalt Dortmund" },
+const categories = [
+  {
+    key: "drumming",
+    labelKey: "catDrumming",
+    images: [gallery1, gallery2, gallery3],
+  },
+  {
+    key: "workshop",
+    labelKey: "catWorkshop",
+    images: [gallery4, gallery5, gallery6, gallery7],
+  },
+  {
+    key: "football",
+    labelKey: "catFootball",
+    images: [foot1, foot2, foot3, foot4],
+  },
+  {
+    key: "kids",
+    labelKey: "catKids",
+    images: [Kid],
+  },
 ];
+
+const CategorySlider = ({ category, label }) => {
+  const [index, setIndex] = useState(0);
+
+  if (category.images.length === 0) {
+    return (
+      <div style={styles.categoryBlock}>
+        <h3 style={styles.categoryTitle}>{label}</h3>
+        <div style={styles.emptyBox}>
+          <p style={styles.emptyText}>Photos coming soon</p>
+        </div>
+      </div>
+    );
+  }
+
+  const prev = () => setIndex((i) => (i === 0 ? category.images.length - 1 : i - 1));
+  const next = () => setIndex((i) => (i === category.images.length - 1 ? 0 : i + 1));
+
+  return (
+    <div style={styles.categoryBlock}>
+      <h3 style={styles.categoryTitle}>{label}</h3>
+      <div style={styles.sliderWrap}>
+        {category.images.map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt={label}
+            style={{
+              ...styles.sliderImg,
+              opacity: index === i ? 1 : 0,
+              zIndex: index === i ? 1 : 0,
+            }}
+          />
+        ))}
+        {category.images.length > 1 && (
+          <>
+            <button style={{ ...styles.sliderArrow, left: "10px" }} onClick={prev}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <button style={{ ...styles.sliderArrow, right: "10px" }} onClick={next}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+            <div style={styles.sliderCounter}>
+              {index + 1} / {category.images.length}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const Gallery = () => {
   const { t } = useLang();
-  const [lightbox, setLightbox] = useState(null); // index of open image
+  const [searchParams] = useSearchParams();
+  const targetCategory = searchParams.get("category");
+  const refs = useRef({});
 
-  const openLightbox = (index) => setLightbox(index);
-  const closeLightbox = () => setLightbox(null);
-
-  const prevImage = () =>
-    setLightbox((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-
-  const nextImage = () =>
-    setLightbox((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  useEffect(() => {
+    if (targetCategory && refs.current[targetCategory]) {
+      refs.current[targetCategory].scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [targetCategory]);
 
   return (
     <div>
-      {/* Page Header */}
       <section style={styles.pageHeader}>
         <h1 style={styles.pageTitle}>{t.gallery.title}</h1>
         <div className="section-underline"></div>
         <p style={styles.pageSubtitle}>{t.gallery.subtitle}</p>
       </section>
 
-      {/* Gallery Grid */}
       <section className="section">
-        <div style={styles.grid}>
-          {images.map((img, index) => (
-            <div
-              key={index}
-              style={styles.imgWrap}
-              onClick={() => openLightbox(index)}
-            >
-              <img
-                src={img.src}
-                alt={img.caption}
-                style={styles.img}
-              />
-              <div style={styles.imgOverlay}>
-                <p style={styles.imgCaption}>{img.caption}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Lightbox */}
-      {lightbox !== null && (
-        <div style={styles.lightboxBg} onClick={closeLightbox}>
-          <div
-            style={styles.lightboxBox}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close */}
-            <button style={styles.closeBtn} onClick={closeLightbox}>
-              <FontAwesomeIcon icon={faXmark} size="lg" />
-            </button>
-
-            {/* Prev */}
-            <button style={styles.prevBtn} onClick={prevImage}>
-              <FontAwesomeIcon icon={faChevronLeft} size="lg" />
-            </button>
-
-            <img
-              src={images[lightbox].src}
-              alt={images[lightbox].caption}
-              style={styles.lightboxImg}
-            />
-
-            {/* Next */}
-            <button style={styles.nextBtn} onClick={nextImage}>
-              <FontAwesomeIcon icon={faChevronRight} size="lg" />
-            </button>
-
-            <p style={styles.lightboxCaption}>
-              {images[lightbox].caption}
-            </p>
-            <p style={styles.lightboxCounter}>
-              {lightbox + 1} / {images.length}
-            </p>
+        {categories.map((cat) => (
+          <div key={cat.key} ref={(el) => (refs.current[cat.key] = el)}>
+            <CategorySlider category={cat} label={t.gallery[cat.labelKey]} />
           </div>
-        </div>
-      )}
+        ))}
+      </section>
     </div>
   );
 };
 
 const styles = {
-pageHeader: {
+  pageHeader: {
     backgroundColor: "#f0fafa",
     borderBottom: "3px solid #87CEEB",
     padding: "60px 20px 40px",
@@ -120,120 +137,85 @@ pageHeader: {
     marginBottom: "16px",
   },
   pageSubtitle: {
-    color: "#87CEEB",
+    color: "#20B2AA",
     fontSize: "1rem",
     marginTop: "8px",
   },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-    gap: "16px",
+  categoryBlock: {
+    marginBottom: "56px",
+    scrollMarginTop: "90px",
+    maxWidth: "800px",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
-  imgWrap: {
+  categoryTitle: {
+    fontSize: "1.3rem",
+    fontWeight: "800",
+    color: "#000000",
+    marginBottom: "18px",
+    borderLeft: "4px solid #20B2AA",
+    paddingLeft: "14px",
+    maxWidth: "800px",
+  },
+  sliderWrap: {
     position: "relative",
-    borderRadius: "10px",
+    width: "100%",
+    maxWidth: "800px",
+    aspectRatio: "4 / 3",
+    maxHeight: "520px",
+    margin: "0 auto",
+    borderRadius: "14px",
     overflow: "hidden",
-    cursor: "pointer",
-    aspectRatio: "4/3",
     backgroundColor: "#e8e8e8",
   },
-  img: {
+  sliderImg: {
+    position: "absolute",
+    inset: 0,
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    transition: "transform 0.3s ease",
+    transition: "opacity 0.6s ease-in-out",
   },
-  imgOverlay: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "rgba(0,0,0,0.65)",
-    padding: "12px 14px",
-    transform: "translateY(100%)",
-    transition: "transform 0.3s ease",
-  },
-  imgCaption: {
-    color: "#ffffff",
-    fontSize: "0.8rem",
-    lineHeight: "1.4",
-  },
-  lightboxBg: {
-    position: "fixed",
-    inset: 0,
-    backgroundColor: "rgba(0,0,0,0.92)",
-    zIndex: 2000,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "20px",
-  },
-  lightboxBox: {
-    position: "relative",
+sliderArrow: {
+  position: "absolute",
+  top: "50%",
+  transform: "translateY(-50%)",
+  backgroundColor: "rgba(255,255,255,0.85)",
+  border: "none",
+  width: "38px",
+  height: "38px",
+  borderRadius: "50%",
+  cursor: "pointer",
+  color: "#000000",
+  zIndex: 5,
+},
+sliderCounter: {
+  position: "absolute",
+  bottom: "12px",
+  right: "12px",
+  backgroundColor: "rgba(0,0,0,0.6)",
+  color: "#ffffff",
+  fontSize: "0.8rem",
+  padding: "4px 10px",
+  borderRadius: "12px",
+  zIndex: 5,
+},
+  emptyBox: {
+    width: "100%",
     maxWidth: "800px",
-    width: "100%",
-    textAlign: "center",
-  },
-  lightboxImg: {
-    width: "100%",
-    borderRadius: "10px",
-    maxHeight: "70vh",
-    objectFit: "contain",
-  },
-  lightboxCaption: {
-    color: "#cccccc",
-    fontSize: "0.9rem",
-    marginTop: "14px",
-    lineHeight: "1.5",
-  },
-  lightboxCounter: {
-    color: "#87CEEB",
-    fontSize: "0.85rem",
-    marginTop: "6px",
-    fontWeight: "700",
-  },
-  closeBtn: {
-    position: "absolute",
-    top: "-40px",
-    right: "0",
-    background: "none",
-    border: "none",
-    color: "#ffffff",
-    cursor: "pointer",
-    fontSize: "1.2rem",
-  },
-  prevBtn: {
-    position: "absolute",
-    left: "-50px",
-    top: "50%",
-    transform: "translateY(-50%)",
-    background: "rgba(135,206,235,0.2)",
-    border: "none",
-    color: "#ffffff",
-    cursor: "pointer",
-    borderRadius: "50%",
-    width: "40px",
-    height: "40px",
+    height: "200px",
+    border: "2px dashed #87CEEB",
+    borderRadius: "14px",
+    backgroundColor: "#f0fafa",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
-  nextBtn: {
-    position: "absolute",
-    right: "-50px",
-    top: "50%",
-    transform: "translateY(-50%)",
-    background: "rgba(135,206,235,0.2)",
-    border: "none",
-    color: "#ffffff",
-    cursor: "pointer",
-    borderRadius: "50%",
-    width: "40px",
-    height: "40px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+  emptyText: {
+    color: "#888888",
+    fontStyle: "italic",
   },
 };
 
 export default Gallery;
+

@@ -8,14 +8,13 @@ import logoImage from "../assets/images/Image1.png";
 const Footer = () => {
   const { t } = useLang();
 
-  const navLinks = [
-    { label: t.nav.home, path: "/" },
-    { label: t.nav.about, path: "/about" },
-    { label: t.nav.activities, path: "/activities" },
-    { label: t.nav.gallery, path: "/gallery" },
-    { label: t.nav.team, path: "/team" },
-    { label: t.nav.contact, path: "/contact" },
-  ];
+const navLinks = [
+  { label: t.nav.home, path: "/" },
+  { label: t.nav.about, path: "/about" },
+  { label: t.nav.activities, path: "/activities" },
+  { label: t.nav.gallery, path: "/gallery" },
+  { label: t.nav.contact, path: "/contact" },
+];
 
   return (
     <footer style={styles.footer}>

@@ -4,8 +4,11 @@ import {
   faPeopleGroup,
   faPalette,
   faDove,
+  faScaleBalanced,
+  faMasksTheater,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const About = () => {
   const { t } = useLang();
@@ -15,6 +18,8 @@ const About = () => {
     { icon: faPeopleGroup, text: t.about.focus2 },
     { icon: faPalette, text: t.about.focus3 },
     { icon: faDove, text: t.about.focus4 },
+    { icon: faScaleBalanced, text: t.about.focus5 },
+    { icon: faMasksTheater, text: t.about.focus6 },
   ];
 
   return (
@@ -32,6 +37,18 @@ const About = () => {
           <div style={styles.textBlock}>
             <h2 style={styles.subTitle}>DJOLO e.V.</h2>
             <p style={styles.bodyText}>{t.about.text}</p>
+            <p style={{ ...styles.bodyText, marginTop: "20px", fontStyle: "italic", color: "#20B2AA" }}>
+              {t.about.meaning}
+            </p>
+            <div style={styles.chairmanBox}>
+              <div style={styles.chairmanAvatar}>
+                <FontAwesomeIcon icon={faUser} size="lg" style={{ color: "#20B2AA" }} />
+              </div>
+              <div>
+                <p style={styles.chairmanLabel}>{t.about.chairmanLabel}</p>
+                <p style={styles.chairmanName}>{t.about.chairmanName}</p>
+              </div>
+            </div>
           </div>
 
           {/* Info Card */}
@@ -198,6 +215,38 @@ const styles = {
     color: "#1a1a1a",
     fontWeight: "600",
   },
+  chairmanBox: {
+  display: "flex",
+  alignItems: "center",
+  gap: "16px",
+  marginTop: "24px",
+  padding: "18px 22px",
+  backgroundColor: "#f0fafa",
+  borderRadius: "12px",
+  borderLeft: "4px solid #20B2AA",
+},
+chairmanAvatar: {
+  width: "48px",
+  height: "48px",
+  borderRadius: "50%",
+  backgroundColor: "#e0f4f4",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minWidth: "48px",
+},
+chairmanLabel: {
+  fontSize: "0.75rem",
+  fontWeight: "700",
+  color: "#20B2AA",
+  textTransform: "uppercase",
+  letterSpacing: "1px",
+},
+chairmanName: {
+  fontSize: "1.05rem",
+  fontWeight: "700",
+  color: "#000000",
+},
 };
 
 export default About;

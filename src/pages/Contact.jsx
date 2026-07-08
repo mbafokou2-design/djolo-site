@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLang } from "../context/LanguageContext";
-import { faLocationDot, faPhone, faPaperPlane, faCircleCheck, faHandHoldingHeart } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faPhone, faEnvelope, faPaperPlane, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 // Replace with your real Formspree endpoint
 const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
@@ -69,6 +69,15 @@ const Contact = () => {
               <div style={styles.divider}></div>
 
               <div style={styles.infoItem}>
+                <div style={styles.infoIconWrap}>
+                  <FontAwesomeIcon icon={faEnvelope} style={styles.infoIcon} />
+                </div>
+                <div>
+                  <p style={styles.infoLabel}>{t.contact.emailLabel}</p>
+                  <a href="mailto:info@djolo.de" style={styles.infoLink}>
+                    info@djolo.de
+                  </a>
+                </div>
                 <div style={styles.infoIconWrap}>
                   <FontAwesomeIcon icon={faPhone} style={styles.infoIcon} />
                 </div>
@@ -193,22 +202,6 @@ const Contact = () => {
                 </button>
               </form>
             )}
-          </div>
-          {/* Donation Section */}
-          <div style={styles.donationBox}>
-            <div style={styles.donationHeader}>
-              <FontAwesomeIcon icon={faHandHoldingHeart} size="2x" style={{ color: "#20B2AA" }} />
-              <h2 style={styles.donationTitle}>{t.donation.title}</h2>
-            </div>
-            <p style={styles.donationSubtitle}>{t.donation.subtitle}</p>
-            <div style={styles.donationDetails}>
-              <p style={styles.donationLine}>{t.donation.iban}</p>
-              <p style={styles.donationLine}>{t.donation.bic}</p>
-              <p style={styles.donationLine}>{t.donation.bank}</p>
-              <p style={styles.donationLine}>{t.donation.recipient}</p>
-              <p style={styles.donationLine}>{t.donation.reference}</p>
-            </div>
-            <p style={styles.donationNote}>{t.donation.note}</p>
           </div>
         </div>
       </section>
@@ -383,48 +376,48 @@ const styles = {
     cursor: "pointer",
   },
   donationBox: {
-  maxWidth: "700px",
-  margin: "50px auto 0",
-  backgroundColor: "#f0fafa",
-  border: "2px solid #87CEEB",
-  borderRadius: "14px",
-  padding: "32px",
-},
-donationHeader: {
-  display: "flex",
-  alignItems: "center",
-  gap: "14px",
-  marginBottom: "6px",
-},
-donationTitle: {
-  fontSize: "1.4rem",
-  fontWeight: "800",
-  color: "#000000",
-},
-donationSubtitle: {
-  fontSize: "0.95rem",
-  color: "#20B2AA",
-  fontWeight: "700",
-  marginBottom: "18px",
-},
-donationDetails: {
-  backgroundColor: "#ffffff",
-  borderRadius: "10px",
-  padding: "18px 20px",
-  marginBottom: "16px",
-},
-donationLine: {
-  fontSize: "0.9rem",
-  color: "#000000",
-  lineHeight: "1.9",
-  fontFamily: "monospace",
-},
-donationNote: {
-  fontSize: "0.85rem",
-  color: "#555555",
-  fontStyle: "italic",
-  lineHeight: "1.6",
-},
+    maxWidth: "700px",
+    margin: "50px auto 0",
+    backgroundColor: "#f0fafa",
+    border: "2px solid #87CEEB",
+    borderRadius: "14px",
+    padding: "32px",
+  },
+  donationHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    marginBottom: "6px",
+  },
+  donationTitle: {
+    fontSize: "1.4rem",
+    fontWeight: "800",
+    color: "#000000",
+  },
+  donationSubtitle: {
+    fontSize: "0.95rem",
+    color: "#20B2AA",
+    fontWeight: "700",
+    marginBottom: "18px",
+  },
+  donationDetails: {
+    backgroundColor: "#ffffff",
+    borderRadius: "10px",
+    padding: "18px 20px",
+    marginBottom: "16px",
+  },
+  donationLine: {
+    fontSize: "0.9rem",
+    color: "#000000",
+    lineHeight: "1.9",
+    fontFamily: "monospace",
+  },
+  donationNote: {
+    fontSize: "0.85rem",
+    color: "#555555",
+    fontStyle: "italic",
+    lineHeight: "1.6",
+  },
 };
 
 export default Contact;

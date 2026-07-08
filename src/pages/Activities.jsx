@@ -53,16 +53,13 @@ const Activities = () => {
       </section>
 
       {/* Bottom Banner */}
+      {/* Bottom Banner */}
       <section style={styles.banner}>
         <div style={styles.bannerContent}>
-          <h2 style={styles.bannerTitle}>
-            {t.lang === "de"
-              ? "Mach mit!"
-              : "Join Us!"}
-          </h2>
-          <p style={styles.bannerSub}>
-            {t.footer.address} — {t.footer.phone}
-          </p>
+          <h2 style={styles.bannerTitle}>{t.activities.joinUs}</h2>
+          <p style={styles.bannerSub}>{t.footer.address}</p>
+          <p style={styles.bannerSub}>{t.footer.phone}</p>
+          <p style={styles.bannerSub}>{t.footer.email}</p>
         </div>
       </section>
     </div>
@@ -70,7 +67,7 @@ const Activities = () => {
 };
 
 const styles = {
-pageHeader: {
+  pageHeader: {
     backgroundColor: "#f0fafa",
     borderBottom: "3px solid #87CEEB",
     padding: "60px 20px 40px",

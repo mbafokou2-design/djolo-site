@@ -5,12 +5,39 @@ import {
   faPeopleGroup,
   faPalette,
   faDove,
+  faScaleBalanced,
+  faMasksTheater,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLang } from "../context/LanguageContext";
 import heroImage from "../assets/images/Image1.png";
+import { faHandHoldingHeart } from "@fortawesome/free-solid-svg-icons";
+import slideDrumming from "../assets/images/gallery1.jpg";
+import slideWorkshop from "../assets/images/gallery4.jpg";
+import slideFootball from "../assets/images/football.jpg";
+import slideKids from "../assets/images/kids.jpg";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+  const slideImages = {
+    drumming: slideDrumming,
+    workshop: slideWorkshop,
+    football: slideFootball,
+    kids: slideKids,
+  };
   const { t } = useLang();
+
+  const [current, setCurrent] = useState(0);
+  const slides = t.activities.featured;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const goPrev = () => setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  const goNext = () => setCurrent((prev) => (prev + 1) % slides.length);
 
   return (
     <div>
@@ -23,9 +50,18 @@ const Home = () => {
             <p style={styles.heroEyebrow}>DJOLO e.V. — Dortmund</p>
             <h1 style={styles.heroTitle}>{t.home.slogan}</h1>
             <p style={styles.heroIntro}>{t.home.intro}</p>
-            <Link to="/about" style={styles.heroBtn}>
-              {t.home.cta}
-            </Link>
+            <p style={{ ...styles.heroIntro, fontStyle: "italic", color: "#20B2AA", fontSize: "0.95rem" }}>
+              {t.about.meaning}
+            </p>
+            <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
+              <Link to="/about" style={styles.heroBtn}>
+                {t.home.cta}
+              </Link>
+              <Link to="/donation" style={styles.donationBtn}>
+                <FontAwesomeIcon icon={faHandHoldingHeart} style={{ marginRight: "8px" }} />
+                {t.donation.subtitle}
+              </Link>
+            </div>
           </div>
 
           {/* Right — Hero Image */}
@@ -33,6 +69,50 @@ const Home = () => {
             <img src={heroImage} alt="Djolo hero" style={styles.heroImage} />
           </div>
 
+        </div>
+      </section>
+      {/* Slideshow */}
+      <section style={styles.slideSection}>
+        <div style={styles.slideWrap}>
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              style={{
+                ...styles.slideItem,
+                opacity: current === index ? 1 : 0,
+                zIndex: current === index ? 1 : 0,
+              }}
+            >
+              <img
+                src={slideImages[slide.category]}
+                alt={slide.title}
+                style={styles.slideImg}
+              />
+              <div style={styles.slideCaption}>
+                <p style={styles.slideCaptionText}>{slide.title}</p>
+              </div>
+            </div>
+          ))}
+
+          <button style={{ ...styles.slideArrow, left: "16px" }} onClick={goPrev}>
+            ‹
+          </button>
+          <button style={{ ...styles.slideArrow, right: "16px" }} onClick={goNext}>
+            ›
+          </button>
+
+          <div style={styles.slideDots}>
+            {slides.map((_, index) => (
+              <span
+                key={index}
+                onClick={() => setCurrent(index)}
+                style={{
+                  ...styles.dot,
+                  backgroundColor: current === index ? "#20B2AA" : "#cceeee",
+                }}
+              />
+            ))}
+          </div>
         </div>
       </section>
       {/* Focus Areas */}
@@ -57,6 +137,14 @@ const Home = () => {
               <FontAwesomeIcon icon={faDove} size="2x" style={styles.icon} />
               <h3 style={styles.cardTitle}>{t.about.focus4}</h3>
             </div>
+            <div className="card" style={styles.focusCard}>
+              <FontAwesomeIcon icon={faScaleBalanced} size="2x" style={styles.icon} />
+              <h3 style={styles.cardTitle}>{t.about.focus5}</h3>
+            </div>
+            <div className="card" style={styles.focusCard}>
+              <FontAwesomeIcon icon={faMasksTheater} size="2x" style={styles.icon} />
+              <h3 style={styles.cardTitle}>{t.about.focus6}</h3>
+            </div>
           </div>
         </div>
       </section>
@@ -67,11 +155,15 @@ const Home = () => {
           <h2 className="section-title">{t.activities.title}</h2>
           <div className="section-underline"></div>
           <div className="grid-2">
-            {t.activities.list.slice(0, 4).map((activity, index) => (
-              <div className="card" key={index} style={styles.activityCard}>
+            {t.activities.featured.map((activity, index) => (
+              <Link
+                to={`/gallery?category=${activity.category}`}
+                className="card"
+                key={index}
+                style={{ ...styles.activityCard, textDecoration: "none" }}
+              >
                 <h3 style={styles.activityTitle}>{activity.title}</h3>
-                <p style={styles.activityDesc}>{activity.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <div style={styles.ctaWrap}>
@@ -230,6 +322,85 @@ const styles = {
     fontWeight: "700",
     fontSize: "0.95rem",
     textDecoration: "none",
+  },
+  donationBtn: {
+    display: "inline-flex",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    color: "#20B2AA",
+    border: "2px solid #20B2AA",
+    padding: "14px 28px",
+    borderRadius: "30px",
+    fontWeight: "700",
+    fontSize: "0.95rem",
+    textDecoration: "none",
+  },
+  slideSection: {
+    backgroundColor: "#ffffff",
+    padding: "60px 20px",
+  },
+  slideWrap: {
+    position: "relative",
+    maxWidth: "900px",
+    height: "480px",
+    margin: "0 auto",
+    borderRadius: "18px",
+    overflow: "hidden",
+    boxShadow: "0 20px 50px rgba(32,178,170,0.15)",
+  },
+  slideItem: {
+    position: "absolute",
+    inset: 0,
+    transition: "opacity 0.6s ease",
+  },
+  slideImg: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+  slideCaption: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: "linear-gradient(to top, rgba(0,0,0,0.75), transparent)",
+    padding: "40px 28px 24px",
+  },
+  slideCaptionText: {
+    color: "#ffffff",
+    fontSize: "1.1rem",
+    fontWeight: "700",
+    lineHeight: "1.4",
+  },
+  slideArrow: {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    backgroundColor: "rgba(255,255,255,0.85)",
+    border: "none",
+    width: "42px",
+    height: "42px",
+    borderRadius: "50%",
+    fontSize: "1.5rem",
+    color: "#000000",
+    cursor: "pointer",
+    zIndex: 2,
+  },
+  slideDots: {
+    position: "absolute",
+    bottom: "12px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    display: "flex",
+    gap: "8px",
+    zIndex: 2,
+  },
+  dot: {
+    width: "9px",
+    height: "9px",
+    borderRadius: "50%",
+    cursor: "pointer",
+    transition: "background-color 0.3s",
   },
 };
 
