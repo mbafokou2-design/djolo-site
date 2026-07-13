@@ -20,6 +20,8 @@ import foot6 from "../assets/images/football5.jpg";
 import foot7 from "../assets/images/football6.jpg";
 import foot8 from "../assets/images/football7.jpg";
 import foot9 from "../assets/images/football8.jpg";
+import foot10 from "../assets/images/football9.jpg";
+import foot11 from "../assets/images/football10.jpg";
 import Kid from "../assets/images/kids.jpg";
 
 
@@ -37,7 +39,7 @@ const categories = [
   {
     key: "football",
     labelKey: "catFootball",
-    images: [foot1, foot2, foot3, foot4, foot5, foot6, foot7, foot8, foot9],
+    images: [foot1, foot2, foot3, foot4, foot5, foot6, foot7, foot8, foot9, foot10 , foot11],
   },
   {
     key: "kids",
